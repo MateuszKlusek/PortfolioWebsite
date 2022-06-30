@@ -37,7 +37,7 @@ export const Text = styled.div`
     text-transform: uppercase;
     margin: 0 10px;
     font-weight: ${props=>props.active? '700' : "400"};
-    font-size: ${props=>props.active ? "18px": "14px"};
+    font-size: ${props=>props.active ? "20px": "14px"};
 
 transition: all 0.248s;
 `
