@@ -10,5 +10,6 @@ margin-top: 40px;
 `
 
 export const Text = styled.div`
-font-size: ${props=>`${props.fontSize}px`};
+   font-size: ${props=>`${props.fontSize}px`};
+   padding-bottom: ${props=>`${props.paddingBottom}px`}
 `
