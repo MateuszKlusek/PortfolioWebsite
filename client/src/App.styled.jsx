@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const AppContainer = styled.div`
-    background-color:#e6ece7; 
-    height: 100vh;
+    background: ${props=>props.theme.light};
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -10,5 +10,6 @@ export const AppContainer = styled.div`
 `
 
 export const MainPageContainer = styled.div`
-    width: 1200px;
+    max-width: 1200px;
+    width: 90%;
 `

@@ -19,10 +19,11 @@ const Navbar = () => {
         <S.Left> Mateusz Kłusek / Software Developer </S.Left>
         <S.MiddleIcon></S.MiddleIcon>
         <S.Right>
-            <S.Text active={handlePathname(location.pathname)==="/work"}><S.StyledLink to="/work">work</S.StyledLink></S.Text>
-            <S.Text active={handlePathname(location.pathname)==="/about"}><S.StyledLink to="/about">about</S.StyledLink></S.Text>
-            <S.Text active={handlePathname(location.pathname)==="/contact"}><S.StyledLink to="/contact">contact</S.StyledLink></S.Text>
+            <S.Text active={handlePathname(location.pathname)==="/work"}><S.StyledLink active={handlePathname(location.pathname)==="/work"} to="/work">work</S.StyledLink></S.Text>
+            <S.Text active={handlePathname(location.pathname)==="/about"}><S.StyledLink active={handlePathname(location.pathname)==="/about"} to="/about">about</S.StyledLink></S.Text>
+            <S.Text active={handlePathname(location.pathname)==="/contact"}><S.StyledLink active={handlePathname(location.pathname)==="/contact"} to="/contact">contact</S.StyledLink></S.Text>
         </S.Right>
+
     </S.NavbarContainer>
     );
 };
