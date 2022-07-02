@@ -39,7 +39,7 @@ const Work = () => {
                     {projectsData[projectsData.findIndex(el=>el.name === activeProject)].data.text}
                 </S.Text>
                 <S.Stack>
-                    Technology used: {projectsData[projectsData.findIndex(el=>el.name === activeProject)].data.stack}
+                    <S.Accented>Technology used:</S.Accented> {projectsData[projectsData.findIndex(el=>el.name === activeProject)].data.stack}
                 </S.Stack>
 
 

@@ -1,10 +1,45 @@
+// react
+import { useRef, useState } from "react";
+
 // styles
 import * as S from "./Contact.styled"
 
-// assets
-import email from "./../../assets/email.png"
+// packages
+import axios from "axios"
 
 const Contact = () => {
+    const [email, setEmail] = useState("")
+    const [subject, setSubject] = useState("")
+    const [context, setContent] = useState("")
+
+    const EmailInputRef = useRef()
+    const SubjectInputRef = useRef()
+    const ContextInputRef = useRef()
+
+
+
+const handleClick = async () =>{
+    console.log(email, subject, context);
+    try{
+        const response = await axios({
+            method: "post",
+            url: "http://localhost:5001",
+            data: {email, subject, context}
+        })
+
+        console.log(response);
+    }catch(err){
+        EmailInputRef.current.value = ""
+        SubjectInputRef.current.value = ""
+        ContextInputRef.current.value = ""
+        setEmail(prev=>"")
+        setSubject(prev=>"")
+        setContent(prev=>"")
+        console.log(err);
+    }
+}
+
+
 return <S.ContactContainer>
 
 
@@ -27,20 +62,40 @@ return <S.ContactContainer>
             </ul>
         </S.Text>
 
-       <S.Text fontSize={18}> do not hesitate to contact me. </S.Text>
-
-        <S.EmailImg src={email} alt={"email"} onClick={()=>{
+       <S.Text fontSize={18}> do not hesitate to send me <S.Email onClick={()=>{
             window.open('mailto:contact@mateuszklusek.com?Body=Hello, I would like to contact you about an employment offer.&Subject=Contact regarding employment offer');
-        }}/>
-
+       }}>an email</S.Email> or use the form</S.Text>
 
 </S.Left>
 <S.Right>
 
-   <S.Input placeholder={"email"}/> 
-   <S.Input placeholder={"subject"}/> 
-   <S.Textarea placeholder={"content"}/> 
-   <S.SendButton>send message</S.SendButton>
+    <S.Input 
+        placeholder={"email"} 
+        ref={EmailInputRef} 
+        onChange={(e)=>{
+            setEmail(prev=>e.target.value)
+        }}
+    /> 
+    <S.Input 
+        placeholder={"subject"} 
+        ref={SubjectInputRef} 
+        onChange={(e)=>{
+            setSubject(prev=>e.target.value)
+        }}
+    /> 
+    <S.Textarea 
+        placeholder={"content"}    
+        ref={ContextInputRef} 
+        onChange={(e)=>{
+            setContent(prev=>e.target.value)
+        }}
+    /> 
+    <S.SendButton 
+        onClick={()=>{
+            handleClick()
+        }}>
+        send message
+    </S.SendButton>
 
 
 

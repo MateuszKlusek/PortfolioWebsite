@@ -15,7 +15,7 @@ export const WorkContainer = styled.div`
     position: relative;
     letter-spacing: 0.4px;
     box-sizing: border-box;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 `
 
 export const Tabs = styled.div`
@@ -111,6 +111,7 @@ export const Title = styled.div`
     text-align: center;
     font-weight: 700;
     text-decoration: underline;
+    text-underline-offset: 3px;
     color: ${props=>props.theme.medium};
 `
 
@@ -125,17 +126,33 @@ export const Text = styled.div`
 `
 
 export const GoTo = styled.div`
-padding-top: 40px;`
+    padding-top: 40px;
+    `
 
 export const GoToWebsite = styled.img`
     width: 35px;
     height: 35px;
+    cursor: pointer;
+    padding-left: 10px;
+
+    @media screen and (max-width: 615px) {
+        width: 25px;
+        height: 25px;
+    }
 `
 
 export const Stack = styled(Text)`
- margin-top: 30px;
+    margin-top: 30px;
 `
 
 export const ProjectNotPicked = styled.div`
     font-size: 14px;
+`
+
+export const Accented = styled.span`
+    font-weight: 700;
+    color: ${props=>props.theme.medium};
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    
 `

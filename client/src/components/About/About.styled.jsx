@@ -15,5 +15,15 @@ export const AboutContainer = styled.div`
 `
 
 export const Text = styled.div`
-    padding:10px 0px;
+    padding:10px;
+    padding-top: ${props=>`${props.paddingTop}px`};
+    @media screen and (max-width: 615px) {
+        font-size: 14px;
+    }
+`
+
+export const Accented = styled.span`
+    color: #4078c0;
+    font-weight: 700;
+    cursor: pointer;
 `
