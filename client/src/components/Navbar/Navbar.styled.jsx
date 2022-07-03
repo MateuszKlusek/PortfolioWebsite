@@ -4,7 +4,7 @@ import styled from "styled-components"
 import {Link} from "react-router-dom"
 
 export const NavbarContainer = styled.div`
-    height: 100px;
+    min-height: 100px;
     display: grid;
     font-size: 13px;
     font-family: 'Inter', sans-serif;

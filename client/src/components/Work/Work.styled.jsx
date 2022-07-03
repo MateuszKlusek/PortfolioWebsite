@@ -4,7 +4,6 @@ import styled from "styled-components"
 import {Link} from "react-router-dom"
 
 export const WorkContainer = styled.div`
-    min-height: 500px; 
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,17 +13,17 @@ export const WorkContainer = styled.div`
     font-size: 14px;
     position: relative;
     letter-spacing: 0.4px;
-    box-sizing: border-box;
-    padding-bottom: 50px;
+
 `
 
 export const Tabs = styled.div`
     width: 100%;
-    height: 25px;
-    padding-top: 15px;
+    min-height: 45px;
     display: flex;
     justify-content: center;
+    align-items: center;
     transition: all 0.5s ease-out;
+    margin-bottom: 25px;
 `
 
 export const Tab = styled.div`
@@ -55,32 +54,27 @@ export const StyledLink = styled(Link)`
 
 export const ProjectContainer = styled.div`
     width: 100%;
-    height:400px;
-    padding-top: 30px;
     display: grid;
     grid-template-columns:300px auto;
     border-radius: 10px;
 
     @media screen and (max-width: 800px) {
         grid-template-columns:1fr; 
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 250px 1fr;
     } 
     `
 
 export const ProjectImgContainer = styled.div`
-    position: relative;
-    /* padding: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 300px;
     max-height: 300px;
-    margin: auto;
-
+    
     @media screen and (max-width: 800px) {
-        width: 250px;
-        height: 250px;
-        padding-bottom: 20px;
+    max-width: 250px;
+    max-height: 250px;
+        margin: auto;
     } 
 `
 
@@ -109,6 +103,7 @@ export const ProjectInfo = styled.div`
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
     padding:0 20px;
+    margin-top: 20px;
 
 `
 export const Title = styled.div`
@@ -134,19 +129,20 @@ export const Text = styled.div`
 `
 
 export const GoTo = styled.div`
-    padding-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
     `
 
 export const GoToWebsite = styled.img`
-    width: 35px;
+    width: auto; 
     height: 35px;
     cursor: pointer;
     padding-left: 10px;
     transition: all 0.248s;
 
     @media screen and (max-width: 615px) {
-        width: 25px;
-        height: 25px;
+        transform: scale(0.7);
     }
 
     &:hover{

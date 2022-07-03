@@ -7,9 +7,12 @@ export const AppContainer = styled.div`
     justify-content: center;
     width: 100%;
     user-select: none;
+    padding-bottom: 90px;
 `
 
 export const MainPageContainer = styled.div`
     max-width: 1200px;
     width: 90%;
+    display: flex;
+    flex-direction: column;
 `
