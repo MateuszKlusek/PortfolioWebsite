@@ -15,31 +15,32 @@ export const NavbarContainer = styled.div`
     grid-template-areas: "left icon right";
 
    @media screen and (max-width: 550px) {
-    grid-template-columns: 4fr 10fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "icon left"
-                     "icon right";
+        grid-template-columns: 1fr  ; 
+        grid-template-rows: 1fr 1fr ;
+        grid-template-areas: "left"
+                            "right";
     }
 `
 
 export const Left = styled.div`
-grid-area: left;
+    grid-area: left;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
     text-align: center;
+    font-weight: 400;
 `
 
 export const MiddleIcon = styled.div`
-grid-area: icon;
-width: 100%;
+    grid-area: icon;
+    width: 100%;
 `
 
 export const Right = styled.div`
-grid-area: right;
-width: 100%;
+    grid-area: right;
+    width: 100%;
     display:flex;
     justify-content: center;
     align-items: center;

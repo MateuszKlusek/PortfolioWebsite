@@ -1,5 +1,5 @@
 // react
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // styles
 import * as S from "./Contact.styled"
@@ -38,6 +38,18 @@ const handleClick = async () =>{
         console.log(err);
     }
 }
+
+const validateEmail = (email) => {
+    var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    return re.test(email)
+};
+useEffect(()=>{
+    if (!validateEmail(email)){
+        EmailInputRef.current.style.outlineColor = "red"
+    }else{
+        EmailInputRef.current.style.outlineColor = "#94a8b3"
+    }
+},[email])
 
 
 return <S.ContactContainer>
@@ -93,7 +105,9 @@ return <S.ContactContainer>
     <S.SendButton 
         onClick={()=>{
             handleClick()
-        }}>
+        }}
+        active={validateEmail(email)}
+        >
         send message
     </S.SendButton>
 

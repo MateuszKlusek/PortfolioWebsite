@@ -57,7 +57,6 @@ const Work = () => {
             </S.ProjectInfo>
             </>
             }
-            {!activeProject && <S.ProjectNotPicked></S.ProjectNotPicked>}
     
             
         </S.ProjectContainer>

@@ -115,6 +115,9 @@ export const SendButton = styled.div`
     animation: all 0.248s;
     box-shadow: 1px 1px 4px 0px #37758d;
 
+    pointer-events: ${props=>!props.active&&"none"};
+    opacity: ${props=>props.active? 1:0.5};
+
     &:hover{
         opacity: 0.85
     }

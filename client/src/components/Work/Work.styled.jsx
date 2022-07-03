@@ -55,10 +55,10 @@ export const StyledLink = styled(Link)`
 
 export const ProjectContainer = styled.div`
     width: 100%;
-    min-height:400px;
+    height:400px;
     padding-top: 30px;
     display: grid;
-    grid-template-columns: minmax(300px, 200px) auto;
+    grid-template-columns:300px auto;
     border-radius: 10px;
 
     @media screen and (max-width: 800px) {
@@ -69,16 +69,24 @@ export const ProjectContainer = styled.div`
 
 export const ProjectImgContainer = styled.div`
     position: relative;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 300px;
+    max-height: 300px;
+    margin: auto;
+
+    @media screen and (max-width: 800px) {
+        width: 250px;
+        height: 250px;
+        padding-bottom: 20px;
+    } 
 `
 
 export const ProjectImg = styled.img`
     width: 100%;
-    max-width: 300px;
-    max-height: 300px;
+    height: 100%;
     border-radius: 8px;
     box-shadow: 2px 2px 6px 1px #d1cdd1; 
     `
@@ -134,10 +142,15 @@ export const GoToWebsite = styled.img`
     height: 35px;
     cursor: pointer;
     padding-left: 10px;
+    transition: all 0.248s;
 
     @media screen and (max-width: 615px) {
         width: 25px;
         height: 25px;
+    }
+
+    &:hover{
+        transform: scale(1.1)
     }
 `
 
