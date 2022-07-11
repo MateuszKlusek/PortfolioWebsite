@@ -19,7 +19,7 @@ export const projectsData = [
     {
         fullName: "VSCode Clone",
         name: "vscodeclone",
-        website: "https://vscodeclone",
+        website: "https://vscodeclone.com",
         github: "https://github.com/MateuszKlusek/VSCodeClone",
         data: {
             imgURL: vscodeclone,

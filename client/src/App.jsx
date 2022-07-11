@@ -27,7 +27,7 @@ function App() {
           <Route path="*" element={<Navigate to="/work" replace />}/>
         </Routes>
         
-       <Separator />
+       <Separator  />
       </S.MainPageContainer>
     </S.AppContainer>
   );

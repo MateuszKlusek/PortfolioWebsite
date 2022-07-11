@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const MainTitleContainer = styled.div`
-   margin-top: 40px;
    margin-bottom: 40px;
    padding: 0 5%;
    font-family: Didot, serif;
