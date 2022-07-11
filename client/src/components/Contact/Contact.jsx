@@ -6,6 +6,10 @@ import * as S from "./Contact.styled"
 
 // packages
 import axios from "axios"
+import gsap from "gsap"
+
+// helpers
+import { axiosURL } from "../../config/axios";
 
 const Contact = () => {
     const [email, setEmail] = useState("")
@@ -15,27 +19,46 @@ const Contact = () => {
     const EmailInputRef = useRef()
     const SubjectInputRef = useRef()
     const ContextInputRef = useRef()
+    const MessageRef=useRef()
 
+    const [isSending, setIsSending] = useState(false)
+    const [message, setMessage] = useState('')
+
+
+
+useEffect(()=>{
+    if (message!=="Sending..."){
+        const tl = gsap.timeline({onComplete: ()=>{
+            setMessage(prev=>"")
+        }})
+        tl.to(MessageRef.current, {autoAlpha :0, delay:2 })
+    }
+},[message])
 
 
 const handleClick = async () =>{
-    console.log(email, subject, context);
     try{
+        setIsSending(prev=>true)
+        setMessage(prev=>"Sending...")
         const response = await axios({
             method: "post",
-            url: "http://localhost:5001",
+            url: `${axiosURL}/email`,
             data: {email, subject, context}
         })
-
-        console.log(response);
+        if (response.status===200){
+            setMessage(prev=>"Email was sent successfully")
+        }
     }catch(err){
+            setMessage(prev=>"Something went wrong, please try again.")
+    }
+    finally{
         EmailInputRef.current.value = ""
         SubjectInputRef.current.value = ""
         ContextInputRef.current.value = ""
         setEmail(prev=>"")
         setSubject(prev=>"")
         setContent(prev=>"")
-        console.log(err);
+        isSending(prev=>false)
     }
 }
 
@@ -110,6 +133,11 @@ return <S.ContactContainer>
         >
         send message
     </S.SendButton>
+    {message &&
+        <S.Message ref={MessageRef} color={message==="Something went wrong, please try again."  ? 'red' :'green'}>
+            {message}
+        </S.Message>
+    }
 
 
 

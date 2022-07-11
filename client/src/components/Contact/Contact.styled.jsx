@@ -31,7 +31,6 @@ export const Right = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
 ` 
 
 export const Text = styled.div`
@@ -137,4 +136,14 @@ export const Email = styled.span`
     text-decoration: underline;
     text-underline-offset: 5px;
     cursor: pointer;
+`
+
+export const Message = styled.div`
+    margin-top: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: ${props=>props.color};
+
 `
