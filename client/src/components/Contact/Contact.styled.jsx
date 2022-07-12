@@ -114,8 +114,8 @@ export const SendButton = styled.div`
     animation: all 0.248s;
     box-shadow: 1px 1px 4px 0px #37758d;
 
-    pointer-events: ${props=>!props.active&&"none"};
-    opacity: ${props=>props.active? 1:0.5};
+    pointer-events: ${props=>!props.isActive&&"none"};
+    opacity: ${props=>props.isActive? 1:0.5};
 
     &:hover{
         opacity: 0.85
@@ -146,4 +146,13 @@ export const Message = styled.div`
     letter-spacing: 1.2px;
     color: ${props=>props.color};
 
+`
+
+export const EmailWarning = styled.div`
+    width: 100%;
+    text-align: center;
+    margin-bottom:5px;
+    color: #b51220;
+    font-weight: 600;
+    letter-spacing: 0.6px;
 `

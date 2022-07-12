@@ -21,6 +21,8 @@ const Contact = () => {
     const ContextInputRef = useRef()
     const MessageRef=useRef()
 
+    const [isEmailValid, setIsEmailValid ]= useState(false)
+
     const [isSending, setIsSending] = useState(false)
     const [message, setMessage] = useState('')
 
@@ -35,6 +37,13 @@ useEffect(()=>{
     }
 },[message])
 
+useEffect(()=>{
+        if (validateEmail(email)){
+            setIsEmailValid(prev=>true)
+        }else{
+            setIsEmailValid(prev=>false)
+        }
+},[email])
 
 const handleClick = async () =>{
     try{
@@ -49,7 +58,11 @@ const handleClick = async () =>{
             setMessage(prev=>"Email was sent successfully")
         }
     }catch(err){
+        if (err.response.status === 429){
+            setMessage(prev=>"Too many requests. Try again later.")
+        }else{
             setMessage(prev=>"Something went wrong, please try again.")
+        }
     }
     finally{
         EmailInputRef.current.value = ""
@@ -66,9 +79,10 @@ const validateEmail = (email) => {
     var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     return re.test(email)
 };
+
 useEffect(()=>{
     if (!validateEmail(email)){
-        EmailInputRef.current.style.outlineColor = "red"
+        EmailInputRef.current.style.outlineColor = "#b51220"
     }else{
         EmailInputRef.current.style.outlineColor = "#94a8b3"
     }
@@ -111,6 +125,11 @@ return <S.ContactContainer>
             setEmail(prev=>e.target.value)
         }}
     /> 
+    {!isEmailValid && email  && 
+        <S.EmailWarning>
+            Email is invalid
+        </S.EmailWarning>
+    }
     <S.Input 
         placeholder={"subject"} 
         ref={SubjectInputRef} 
@@ -129,12 +148,12 @@ return <S.ContactContainer>
         onClick={()=>{
             handleClick()
         }}
-        active={validateEmail(email)}
+        isActive={validateEmail(email)}
         >
         send message
     </S.SendButton>
     {message &&
-        <S.Message ref={MessageRef} color={message==="Something went wrong, please try again."  ? 'red' :'green'}>
+        <S.Message ref={MessageRef} color={message==="Something went wrong, please try again." || message==="Too many requests. Try again later."  ? '#b51220' :'green'}>
             {message}
         </S.Message>
     }

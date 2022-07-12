@@ -5,6 +5,8 @@ import nodemailer from "nodemailer"
 import fs from "fs"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
+import rateLimit from "express-rate-limit"
+
 dotenv.config()
 
 const app = express()
@@ -16,7 +18,7 @@ const PORT = process.env.PORT || 5003
 const serverPath = process.cwd()
 var accessLogStream = fs.createWriteStream(`${serverPath}/src/logs/access.log`, { flags: 'a' })
 
-
+// middleware
 
 app.use(cors({
     origin: "*"
@@ -24,13 +26,15 @@ app.use(cors({
 app.use(morgan('combined', { stream: accessLogStream }))
 app.use(bodyParser());
 
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+})
+app.use(limiter)
 
-
-
-
-// no routes or controllers
-// this server is purely for sending emails
-
+// one route so far (just for emails)
 app.post("/api/email", (req, res) => {
     const { email, subject, context } = req.body
     console.log(process.env.PASS)
@@ -61,7 +65,6 @@ app.post("/api/email", (req, res) => {
         }
     });
 })
-
 
 
 app.listen(PORT, () => {
