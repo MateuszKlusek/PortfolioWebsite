@@ -26,8 +26,8 @@ app.use(cors({
 const serverPath = process.cwd()
 var accessLogStream = fs.createWriteStream(`${serverPath}/src/logs/access.log`, { flags: 'a' })
 app.use(morgan('combined', { stream: accessLogStream }))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
 
 
 // rage limites
